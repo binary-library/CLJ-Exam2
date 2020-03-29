@@ -81,7 +81,7 @@
     [:div {:class "checkbox mb-3"}
      [:label {}
       [:input {:type "checkbox" :value "remember-me"} ]]]
-    [:button {:class "btn btn-lg btn-primary btn-block" :type "submit"} "Sign in"]
+    [:button {:class "btn btn-lg btn-primary btn-block" :type "submit"} "Sign in" ]
     [:p {:class "mt-5 mb-3 text-muted"} "Â© 2017-2019"]]]]
 )
 
