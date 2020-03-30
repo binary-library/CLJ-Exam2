@@ -13,6 +13,7 @@
                  [ns-tracker "0.4.0"]
                  [re-pressed "0.3.1"]
                  [breaking-point "0.1.2"]
+                 [com.degel/re-frame-firebase "0.8.0"]
                  [com.degel/iron "0.4.0"]]
 
   :plugins [[lein-garden "0.3.0"]

@@ -4,6 +4,7 @@
    [re-com.core :as re-com]
    [breaking-point.core :as bp]
    [exam2.subs :as subs]
+   [exam2.events :as events]
    [iron.re-utils :as re-utils :refer [<sub >evt event->fn sub->fn]]
    ))
 
@@ -75,13 +76,22 @@
     [:img {:class "mb-4" :src "../images/Cow.jpg" :alt "" :width "72" :height "72"}]
     [:h1 {:class "h3 mb-3 font-weight-normal"} "Please sign in"]
     [:label {:for "inputEmail" :class "sr-only"} "Email address"]
-    [:input {:type "email" :id "inputEmail" :class "form-control" :placeholder "Email address" :required "" :autoFocus ""}]
+    [:input {:type "email" 
+             :id "inputEmail"
+             :class "form-control"
+             :placeholder "Email address"
+             :required "" 
+             :autoFocus ""
+             :value (<sub [::subs/login-email])
+             :onChange  #(>evt [::events/changeLoginEmail (.-value (.getElementById js/document "inputEmail"))])
+             }]
     [:label {:for "inputPassword" :class "sr-only"} "Password"]
     [:input {:type "password" :id "inputPassword" :class "form-control" :placeholder "Password" :required ""}]
     [:div {:class "checkbox mb-3"}
      [:label {}
       [:input {:type "checkbox" :value "remember-me"} ]]]
-    [:button {:class "btn btn-lg btn-primary btn-block" :type "submit"} "Sign in" ]
+    [:button {:class "btn btn-lg btn-primary btn-block"
+              :onClick #(println "Submit")} "Sign in" ]
     [:p {:class "mt-5 mb-3 text-muted"} "Â© 2017-2019"]]]]
 )
 
@@ -89,6 +99,7 @@
 [:div 
 [:p "this is about"] ])
 (defn- panels [panel-name]
+  (println panel-name)
   (case panel-name
     :home-panel [home-panel]
     :about-panel [about-panel]

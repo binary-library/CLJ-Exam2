@@ -5,11 +5,12 @@
    [re-pressed.core :as rp]
    [breaking-point.core :as bp]
    [exam2.events :as events]
+   [exam2.subs :as subs]
    [exam2.routes :as routes]
    [exam2.views :as views]
    [exam2.config :as config]
+   [com.degel.re-frame-firebase :as firebase]
    ))
-
 
 (defn dev-setup []
   (when config/debug?
@@ -34,4 +35,10 @@
   ;                                         :large-monitor]
   ;                           :debounce-ms 166}])
   (dev-setup)
+  ; (firebase/init :firebase-app-info      config/firebase-app-info
+  ;               ; See: https://firebase.google.com/docs/reference/js/firebase.firestore.Settings
+  ;               ; :firestore-settings     {:timestampsInSnapshots true}
+  ;               :get-user-sub           [::subs/user]
+  ;               :set-user-event         [::events/set-auth-user]
+  ;               :default-error-handler  [::events/firebase-error])
   (mount-root))
